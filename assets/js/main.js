@@ -2,6 +2,12 @@
 
 // add event on multiple element
 
+// if (history.scrollRestoration) {
+//   history.scrollRestoration = "auto";
+// }
+// gsap.registerPlugin(ScrollTrigger);
+// ScrollTrigger.clearScrollMemory();
+
 const addEventOnElements = function (elements, eventType, callback) {
   if (elements) {
     for (let i = 0; i < elements.length; i++) {
@@ -179,25 +185,46 @@ $('a[href^="#"]').click(function () {
   return false;
 });
 
-let sections = $('.js-section section'),
-  nav = $('.is-nav'),
+let sections = $(".js-section section"),
+  nav = $(".is-nav"),
   nav_height = nav.outerHeight();
 
-$(window).on('scroll', function () {
+$(window).on("scroll", function () {
   let cur_pos = $(this).scrollTop();
   sections.each(function () {
     let top = $(this).offset().top - nav_height,
       bottom = top + $(this).outerHeight();
 
     if (cur_pos >= top && cur_pos <= bottom) {
-      nav.find('a').removeClass('active');
-      sections.removeClass('active');
+      nav.find("a").removeClass("active");
+      sections.removeClass("active");
 
-      $(this).addClass('active');
-      nav.find('a[href="#' + $(this).attr('id') + '"]').addClass('active');
+      $(this).addClass("active");
+      nav.find('a[href="#' + $(this).attr("id") + '"]').addClass("active");
     }
   });
 });
+
+/* ----------------------------- scroll parallax ---------------------------- */
+
+if ($(".js-parallax-wrap").length > 0) {
+  gsap.registerPlugin(ScrollTrigger);
+  // ScrollTrigger.clearScrollMemory();
+  ScrollTrigger.clearScrollMemory("manual") ;
+  window.history.scrollRestoration = "manual";
+  gsap.utils.toArray(".js-parallax-wrap").forEach(function (t) {
+    let r = gsap.to($(t).find(".js-parallax"), {
+      yPercent: -16.66666,
+      ease: "none",
+      scrollTrigger: {
+        trigger: t,
+        start: "top 80%",
+        end: "bottom 0%",
+        scrub: 1,
+      },
+    });
+  });
+}
 
 /* -------------------------------- homepage -------------------------------- */
 
@@ -254,18 +281,20 @@ if (document.getElementById("homepage")) {
 
   // ===== resize =====
   const resizeTabServices = () => {
-    const servicesLeft = document.querySelector('.services_left');
-    const servicesContent = document.querySelectorAll('.homepage .services_content li');
-    servicesContent.forEach(query => {
+    const servicesLeft = document.querySelector(".services_left");
+    const servicesContent = document.querySelectorAll(
+      ".homepage .services_content li"
+    );
+    servicesContent.forEach((query) => {
       query.style.setProperty("top", servicesLeft.offsetHeight + 55 + "px");
-    })
-  }
+    });
+  };
   ["resize", "load"].forEach((evt) => {
     window.addEventListener(evt, () => {
       resizeTabServices();
     });
   });
-  resizeTabServices()
+  resizeTabServices();
 }
 
 /* ------------------------------ services page ----------------------------- */
@@ -439,15 +468,15 @@ if (document.getElementById("contactpage")) {
 
   // disable option 1
   $(document).ready(function () {
-    const $select = $('.wpcf7-select');
+    const $select = $(".wpcf7-select");
     $select.each(function (e) {
-      const first_option = $(this).find('option').first();
-      if (first_option.attr('value') == '') {
-        first_option.attr('disabled', true);
-        first_option.attr('hidden', true);
-        first_option.attr('selected', true);
+      const first_option = $(this).find("option").first();
+      if (first_option.attr("value") == "") {
+        first_option.attr("disabled", true);
+        first_option.attr("hidden", true);
+        first_option.attr("selected", true);
       }
-    })
+    });
   });
 
   //Show input error messages
@@ -517,7 +546,7 @@ if (document.getElementById("contactpage")) {
 
   // ====== handle form ======
   $(".js-clear").click(function () {
-    $('.js-form').find("input, textarea").val("");
+    $(".js-form").find("input, textarea").val("");
   });
   $("#js-checkbox").change(function () {
     let isCheck = this.checked;
@@ -544,6 +573,95 @@ if (document.getElementById("contactpage")) {
       checkMailMatch(email, emailConfirm);
     });
   }
+}
+
+/* ------------------------------- factorypage ------------------------------ */
+
+if (document.getElementById("factorypage")) {
+  const swiperFactory = new Swiper(".showcase_swiper", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    lazy: true,
+    speed: 600,
+    breakpoints: {
+      0: {
+        spaceBetween: 15,
+        draggable: true,
+        slidesPerView: 1.1,
+      },
+      1024: {
+        spaceBetween: 20,
+        draggable: false,
+        slidesPerView: 1.75,
+      },
+    },
+  });
+
+  // ===== custom cursor =====
+
+  const cursorPrev = document.querySelector(".cursor-prev");
+  const cursorNext = document.querySelector(".cursor-next");
+
+  const mousemoveHandler = (e) => {
+    const target = e.target;
+    const tl = gsap.timeline({
+      defaults: {
+        x: e.clientX,
+        y: e.clientY,
+        ease: "power2.out",
+      },
+    });
+
+    if (
+      document.querySelector(".swiper-button-next") &&
+      document.querySelector(".swiper-button-prev")
+    ) {
+      // hover section slider
+      if (
+        target.tagName.toLowerCase() === "button" &&
+        target.closest(".swiper-button-next")
+      ) {
+        tl.to(cursorPrev, {
+          opacity: 0,
+        }).to(
+          cursorNext,
+          {
+            opacity: 1,
+          },
+          "-=0.5"
+        );
+      } else if (
+        target.tagName.toLowerCase() === "button" &&
+        target.closest(".swiper-button-prev")
+      ) {
+        tl.to(cursorPrev, {
+          opacity: 1,
+        }).to(
+          cursorNext,
+          {
+            opacity: 0,
+          },
+          "-=0.5"
+        );
+      } else {
+        tl.to(".cursor", {
+          opacity: 0,
+        });
+      }
+    }
+  };
+
+  const mouseleaveHandler = () => {
+    if (document.querySelector(".cursor")) {
+      gsap.to(".cursor", {
+        opacity: 0,
+      });
+    }
+  };
+  document.addEventListener("mousemove", mousemoveHandler);
+  document.addEventListener("mouseleave", mouseleaveHandler);
 }
 
 /* ---------------------------- fade lazyloading ---------------------------- */

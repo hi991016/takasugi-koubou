@@ -174,22 +174,22 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <figure class="c-img factory_img">
-                                        <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/gray.webp" alt="FACTORY" width="384"
+                                        <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/home/factory_1.webp" alt="FACTORY" width="384"
                                             height="512" loading="lazy">
                                     </figure>
                                 </div>
                                 <div class="swiper-slide">
                                     <figure class="c-img factory_img">
-                                        <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/gray.webp" alt="FACTORY" width="384"
+                                        <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/home/factory_2.webp" alt="FACTORY" width="384"
                                             height="512" loading="lazy">
                                     </figure>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="factory_items items-1 pc-only">
-                            <figure class="c-img factory_img img-1">
-                                <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/gray.webp" alt="FACTORY" width="345"
+                        <div class="factory_items factory_parallax items-1 pc-only">
+                            <figure class="js-parallax-wrap">
+                                <img draggable="false" class="js-parallax" src="<?= get_template_directory_uri() ?>/assets/img/home/factory_1.webp" alt="FACTORY" width="345"
                                     height="460" loading="lazy">
                             </figure>
                         </div>
@@ -202,9 +202,9 @@
                         </div>
                     </div>
 
-                    <div class="factory_items items-2 pc-only">
-                        <figure class="c-img factory_img img-2">
-                            <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/gray.webp" alt="FACTORY" width="690" height="690"
+                    <div class="factory_items factory_parallax items-2 pc-only">
+                        <figure class="js-parallax-wrap">
+                            <img draggable="false" class="js-parallax" src="<?= get_template_directory_uri() ?>/assets/img/home/factory_2.webp" alt="FACTORY" width="690" height="690"
                                 loading="lazy">
                         </figure>
                     </div>
