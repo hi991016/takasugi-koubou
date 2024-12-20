@@ -210,7 +210,7 @@ $(window).on("scroll", function () {
 if ($(".js-parallax-wrap").length > 0) {
   gsap.registerPlugin(ScrollTrigger);
   // ScrollTrigger.clearScrollMemory();
-  ScrollTrigger.clearScrollMemory("manual") ;
+  ScrollTrigger.clearScrollMemory("manual");
   window.history.scrollRestoration = "manual";
   gsap.utils.toArray(".js-parallax-wrap").forEach(function (t) {
     let r = gsap.to($(t).find(".js-parallax"), {
@@ -466,6 +466,8 @@ if (document.getElementById("contactpage")) {
   const inquiry = document.getElementById("inquiry");
   const btnSend = document.getElementById("btnSend");
 
+  let hasError = false;
+
   // disable option 1
   $(document).ready(function () {
     const $select = $(".wpcf7-select");
@@ -485,12 +487,14 @@ if (document.getElementById("contactpage")) {
     formControl.className = "contact_field error";
     const small = formControl.querySelector("small");
     small.innerText = message;
+    hasError = false;
   };
 
   //show success colour
   const showSucces = (input) => {
     const formControl = input.parentElement;
     formControl.className = "contact_field success";
+    hasError = true;
   };
 
   //check email is valid
@@ -565,12 +569,18 @@ if (document.getElementById("contactpage")) {
   // });
 
   if (btnSend) {
-    btnSend.addEventListener("click", () => {
+    btnSend.addEventListener("click", (e) => {
       checkRequired([username, email, emailConfirm, inquiry, category]);
       checkLength(username, 3, 99);
       checkEmail(email);
       checkEmail(emailConfirm);
       checkMailMatch(email, emailConfirm);
+
+      if (hasError && $(".contact_field.error").length === 0) {
+        $("#jsForm").submit();
+      } else {
+        return false;
+      }
     });
   }
 }
