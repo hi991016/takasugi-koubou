@@ -49,7 +49,7 @@
                             </div>
 
                             <figure class="philosophy_thumb">
-                                <img src="<?= get_template_directory_uri() ?>/assets/img/gray.webp" alt="PHILOSOPHY" loading="lazy" width="1035"
+                                <img src="<?= get_template_directory_uri() ?>/assets/img/about_1.webp" alt="PHILOSOPHY" loading="lazy" width="1035"
                                     height="600">
                             </figure>
                         </div>
@@ -200,6 +200,9 @@
                                     </div class="company_items">
                                 </div>
                             </div>
+                            <div class="bnr_poripori">
+	                            <a href="https://poripori.base.shop/" target="_blank"><img src="<?= get_template_directory_uri() ?>/assets/img/home/bnr_poripori.webp"></a>
+	                        </div>
                         </div>
                     </section>
                 </div>

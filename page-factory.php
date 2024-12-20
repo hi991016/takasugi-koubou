@@ -45,7 +45,7 @@
         <section class="mainvisual">
             <div class="mainvisual_container --padd">
                 <picture class="mainvisual_picture">
-                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/mainvisual_sp.webp">
+                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/home/factory_1.webp">
                     <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/factory/mainvisual_pc.webp" alt="Factory"
                         loading="lazy" width="1380" height="690">
                 </picture>
@@ -72,7 +72,7 @@
                         <div class="swiper-wrapper">
                             <div class="showcase_slide swiper-slide">
                                 <picture class="c-img showcase_picture">
-                                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/slide_1_pc.webp">
+                                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/slide_1_sp.webp">
                                     <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/factory/slide_1_pc.webp" alt="SPEED"
                                         loading="lazy" width="780" height="520">
                                 </picture>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="showcase_slide swiper-slide">
                                 <picture class="c-img showcase_picture">
-                                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/slide_2_pc.webp">
+                                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/slide_2_sp.webp">
                                     <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/factory/slide_2_pc.webp" alt="LOW-COST"
                                         loading="lazy" width="780" height="520">
                                 </picture>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="showcase_slide swiper-slide">
                                 <picture class="c-img showcase_picture">
-                                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/slide_3_pc.webp">
+                                    <source media="(max-width:1023px)" srcset="<?= get_template_directory_uri() ?>/assets/img/factory/slide_3_sp.webp">
                                     <img draggable="false" src="<?= get_template_directory_uri() ?>/assets/img/factory/slide_3_pc.webp" alt="FLEXIBLE"
                                         loading="lazy" width="780" height="520">
                                 </picture>

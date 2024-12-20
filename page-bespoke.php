@@ -14,9 +14,10 @@
                     <div class="layout_sticky">
                         <h2>SERVICES</h2>
 
-                        <a href="<?= home_url(); ?>/services/">DISPLAY & SIGN</a>
+                        <a class="active" href="<?= home_url(); ?>/services/">DISPLAY & SIGN</a>
                         <a class="active" href="<?= home_url(); ?>/services/bespoke">BESPOKE, SHOP IN SHOP</a>
-                        <a href="<?= home_url(); ?>/services/exhibition">EXHIBITION, EVENT</a>
+                        <a class="active" href="<?= home_url(); ?>/services/exhibition">EXHIBITION, EVENT</a>
+                        <a class="active" href="https://poripori.base.shop/" target="_blank">ORIGINAL BRAND</a>
                     </div>
                 </div>
 
